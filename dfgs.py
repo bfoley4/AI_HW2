@@ -95,39 +95,6 @@ def get_path(board, visited):
         b.print_board()
         print('')
 
-
-def dfgs(start_board):
-    """
-    :param start_board:
-    :return:
-    """
-
-    visited = {}
-    curr_time = time.time()
-    depth = 0
-
-    while True:
-
-        if (time.time() - curr_time) * 1000 > 15000:
-            print('Sorry... We did not find a solution within 15 seconds using IDDFS... Terminating the program.')
-            break
-
-        b = Board(start_board)
-        cb_as_list = b.board_as_string_list
-        visited[' '.join(str(e) for e in cb_as_list)] = 'NULL'
-
-        if dls(start_board, depth, visited):
-            get_path(GOAL_STATE_15, visited)
-            print('*** Solution Found using IDDFS!                     ***')
-            print('*** The Solution Path has been printed out for you. ***')
-            return True
-
-        depth += 1
-        visited.clear()
-
-    return False
-
-
 def dls(current_board, depth, visited):
     """
     :param current_board:
@@ -178,7 +145,7 @@ def dls(current_board, depth, visited):
     return False
 
 
-def nr_iddfs(start_board):
+def dfgs(start_board):
     """
     :param start_board:
     :return:

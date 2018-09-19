@@ -1,5 +1,6 @@
 from a_star import a_star
 from iddfs import iddfs
+from dfgs import dfgs
 from constants import *
 import globals
 import psutil
@@ -42,8 +43,15 @@ def main():
     manhattan_astar_time = time.time() - manhattan_astar_start_time
     gc.collect()
 
+    # dfgs time
+    dfgs_start_time = time.time()
+    dfgs(users_board)
+    dfgs_time = time.time() - dfgs_start_time
+    gc.collect()
+
     print(iddfs_time * 1000, 'ms')
     print(manhattan_astar_time * 1000, 'ms')
+    print(dfgs_time * 1000, 'ms')
 
 if __name__ == "__main__":
     main()
